@@ -1,0 +1,41 @@
+:root {
+  --rounded-border: 0.3rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--rounded-border);
+}
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  max-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+main {
+  overflow: hidden;
+  padding: 0.1rem 0.35rem;
+
+}
+p {
+  max-width: 100%;
+}
+a {
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.bold {
+  font-weight: bold;
+}

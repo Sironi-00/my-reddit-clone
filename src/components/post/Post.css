@@ -1,0 +1,51 @@
+.post a {
+    color: unset;
+}
+.post {
+    position: relative;
+    
+    background-color: #FFF;
+    border: 0.1rem solid #000;
+    box-shadow: 0 0 0.5rem #0007;
+    
+    flex: 400px 0 1;
+    max-height: max-content;
+    /* overflow: auto; */
+}
+.post .head-info {
+    background-color: #0001;
+    padding: 0.25rem 0.5rem ;
+    border-radius: 0%;
+}
+.post .post-title {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+.post .post-title a {
+    text-decoration: none;
+}
+
+
+.post .flair-text {
+    background-color: #ce99;
+    margin: 0.25rem auto;
+    padding: 0 0.25rem;
+    width: max-content;
+    align-self: center;
+    opacity: 0.75;
+}
+.post .markdown-text {
+    background-color: #0001;
+    margin: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+.post .post-carousel {
+    margin: 0.25rem;
+}
+.post .post-footer {
+    padding: 0.25rem 0.5rem ;
+    border-radius: 0%;
+}
+.post .post-rating {
+    gap: 0.5rem;
+}
