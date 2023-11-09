@@ -9,8 +9,9 @@
   border-radius: var(--rounded-border);
 }
 #root {
-  max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
   height: 100vh;
   max-height: 100dvh;
   display: grid;
@@ -19,6 +20,7 @@
 main {
   overflow: hidden;
   /* padding: 0.1rem 0.35rem; */
+  max-width: 100%;
 
 }
 p {

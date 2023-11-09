@@ -15,7 +15,7 @@ export default function Comments() {
         () => async () => {
             if (postId) {
                 const data = await getComments(postId);
-                // console.log(data)
+                console.log(data)
                 setPostState(data);
             }
         },
@@ -23,6 +23,7 @@ export default function Comments() {
     );
 
     return (
+        <>
         <div className="comment-page">
             <div className="comments">
                 {postState[0] && <Post postObject={postState[0]["data"]["children"][0]} />}
@@ -34,5 +35,6 @@ export default function Comments() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

@@ -1,0 +1,24 @@
+.search {
+    
+}
+.search input {
+    background-color: #FFF;
+    border-radius: var(--rounded-border) 0 0rem var(--rounded-border);
+    border: 0.125rem solid #0003;
+    /* border-right: 0; */
+    text-align: center;
+}
+.search input:focus{
+    background-color: #0002;
+}
+.search input:focus + .sib {
+    outline: 0.15rem solid #32a1ce;;
+}
+
+.search button {
+    padding: 0 0.15rem;
+    background-color: #FFF;
+    border-radius: 0 var(--rounded-border) var(--rounded-border) 0;
+    border: 0.125rem solid #0003;
+    border-left: 0;
+}

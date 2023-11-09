@@ -1,8 +1,9 @@
 import "./Header.css";
 import Search from '../search/Search'
-import { Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Header () {
+    const navigate = useNavigate();
     return (
         <header>
             <div className="logo">
@@ -10,8 +11,8 @@ export default function Header () {
                 </div>
             <Search />
             <nav>
-                <a href="">Home</a>
-                <a href="">X</a>
+                <NavLink to="">Home</NavLink>
+                <NavLink onClick={() => navigate(-1)}>Back</NavLink>
             </nav>
         </header>
     );

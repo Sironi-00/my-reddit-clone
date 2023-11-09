@@ -1,6 +1,10 @@
 // const baseURL = "https://www.reddit.com/";
 
+import fakePosts from "./fakeData/posts";
 const getPosts = async (paramString="") => {
+    //return (await Promise.resolve(fakePosts)).data.children;
+    // eslint-disable-next-line no-unreachable
+    
     try {
         const res = await fetch(`https://www.reddit.com/${paramString}.json?raw_json=1`);
         if(res.ok) {
@@ -9,17 +13,19 @@ const getPosts = async (paramString="") => {
         }
         return []
     } catch (err) {
-        console.log(err);
+        console.log("Error: API getPosts()", err);
         return []
     }
     
 }
 
+import fakeComments from "./fakeData/comments";
 const getComments = async (postId) => {    
+    //return (await Promise.resolve(fakeComments));
+    // eslint-disable-next-line no-unreachable
     if (!postId) {
         throw new Error("no postId")
     }
-    // eslint-disable-next-line no-unreachable
     try {
         const res = await fetch(`https://www.reddit.com/${postId}.json?raw_json=1`);
         if(res.ok) {
@@ -28,21 +34,26 @@ const getComments = async (postId) => {
         }
         return []
     } catch (err) {
-        console.log(err);
+        console.log("Error: API getComments()", err);
         return []
     }
 }
 
-const getSubreddits = async () => {    
+import fakeSubreddits from "./fakeData/subreddits";
+const getSubreddits = async () => {
+    //return (await Promise.resolve(fakeSubreddits)).data.children;
+    // eslint-disable-next-line no-unreachable
+    
     try {
-        const res = await fetch(`https://www.reddit.com/r.json?raw_json=1`);
+        const res = await fetch(`https://www.reddit.com/subreddits.json?raw_json=1`);
         if(res.ok) {
             const resJson = await res.json();
-            return resJson;
+            console.log(resJson["data"]["children"])
+            return resJson["data"]["children"];
         }
         return []
     } catch (err) {
-        console.log(err);
+        console.log("Error: API getSubreddits()", err);
         return []
     }
 }
@@ -55,11 +66,11 @@ const getSearch = async (query) => {
         const res = await fetch(`https://www.reddit.com/search.json?q=${query}&raw_json=1`);
         if(res.ok) {
             const resJson = await res.json();
-            return resJson;
+            return resJson["data"]["children"];
         }
         return []
     } catch (err) {
-        console.log(err);
+        console.log("Error: API getSearch()", err);
         return []
     }
 }

@@ -14,7 +14,7 @@ export default function Carousel({imageArray}) {
 
     return (
         <div className="post-carousel">
-            <img src={imageArray[currentImg]} alt={`Alt: ${imageArray[currentImg]}`} />
+            <img loading="lazy" src={imageArray[currentImg]} alt={`Alt: ${imageArray[currentImg]}`} />
             {
                 imageArray.length > 1 && 
                 <>
