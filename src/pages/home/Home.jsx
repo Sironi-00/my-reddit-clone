@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+
+import { useEffect, useState } from "react";
 import { getPosts } from "../../api/redditApi";
 import Post from "../../components/post/Post";
+import SubredditsBar from "../../components/subredditsBar/SubredditsBar";
 
 export default function Home() {
   const [postsState, setPostsState] = useState([]);
@@ -14,12 +15,7 @@ export default function Home() {
     , [])
   return (
     <div className="posts-page">
-    <div className="sub-heads">
-      <Link to="">Sub</Link>
-      <Link to="">Sub</Link>
-      <Link to="">Sub</Link>
-      <Link to="">Sub</Link>
-    </div>
+    <SubredditsBar />
     <h2>
       Display posts like YT posts: {postsState.length} 
     </h2>

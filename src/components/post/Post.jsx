@@ -68,6 +68,7 @@ export default function Post({ postObject }) {
 
         media_metadata,
         preview,
+        is_video
     } = data;
 
     const extractGalleryUrl = (metaData) => {
@@ -75,9 +76,8 @@ export default function Post({ postObject }) {
         if (!metaData) {
             return [];
         }
-
+        
         const galleryUrl = [];
-
         Object.keys(media_metadata).forEach((galleryItem) => {
             const itemUrl = metaData[galleryItem]["s"]["u"];
             if (itemUrl) {
@@ -92,6 +92,7 @@ export default function Post({ postObject }) {
         if (!preview) {
             return [];
         }
+        
         const previewUrl = [];
         preview["images"].map((item) => {
             const itemUrl = item["source"].url;
@@ -102,11 +103,17 @@ export default function Post({ postObject }) {
         return previewUrl;
     };
 
+    if (is_video) {
+        return
+    }
+
     return (
         <div className="post">
             <div className="flex head-info">
                 <Link to={`/r/${subreddit}`}>r/{subreddit}</Link>
-                <Link to={`/author/${author}`}>{author}</Link>
+                <p>
+                    Posted by <Link to={`/author/${author}`}>{author}</Link>
+                </p>
                 {/* <Link to={`/a/${author_fullname}`}>r/{author_fullname}</Link> */}
                 <p className="bold">{new Date(created_utc * 1000).toLocaleDateString()}</p>
             </div>

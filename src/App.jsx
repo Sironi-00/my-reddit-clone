@@ -3,6 +3,8 @@ import './App.css'
 import Root from './root/Root'
 import Home from './pages/home/Home'
 import Comments from './pages/comments/Comments.jsx'
+import Subreddit from './pages/subreddit/Subreddit.jsx'
+import Author from './pages/author/Author.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,10 +18,10 @@ const router = createBrowserRouter([
         element: <Comments />
       }, {
         path: "/author/:author",
-        element: <Home  />
+        element: <Author />
       }, {
         path: "/r/:subreddit",
-        element: <Home  />
+        element: <Subreddit />
       }
     ]
 
