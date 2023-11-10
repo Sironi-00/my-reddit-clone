@@ -4,51 +4,6 @@ import Markdown from "react-markdown";
 import Carousel from "../carousel/Carousel";
 
 export default function Post({ postObject }) {
-    // post, src=reddit || embed
-    // post, has img || is_gallery || carousel
-    // post, Thumbnail
-    // Post, link in selftext
-    /* 
-        data{} / children[] / {} / data{
-            subreddit: [string]
-            author_fullname: [string]
-            author: [string]
-            name: [string]
-            title: [string]
-            id: [string]
-            
-            num_comments: [int]
-            created_utc: [int]
-            
-            # selftext_html: [string]
-            url: [string]
-            permalink: [string]
-
-            downs: [int]
-            ups: [int]
-            score: [int]
-            over_18: [bool]
-
-            selftext: [string]
-            
-            link_flair_text
-            is_video: [bool]
-            
-            
-            media_embed: [{}]
-            
-            is_reddit_media_domain: [bool]
-            thumbnail: [string]
-            is_self: [bool]
-            
-            subreddit_id: [string]
-            num_crossposts: [int]
-            
-            is_original_content: [bool] ?
-            media: [null] ?
-        } 
-    */
-
     const { data } = postObject;
     const {
         subreddit,
@@ -114,7 +69,6 @@ export default function Post({ postObject }) {
                 <p>
                     Posted by <Link to={`/author/${author}`}>{author}</Link>
                 </p>
-                {/* <Link to={`/a/${author_fullname}`}>r/{author_fullname}</Link> */}
                 <p className="bold">{new Date(created_utc * 1000).toLocaleDateString()}</p>
             </div>
             <h3 className="post-title">
@@ -124,7 +78,6 @@ export default function Post({ postObject }) {
 
             {selftext && (
                 <>
-                    {/* <p className="head-text">Text:</p> */}
                     <Markdown className="markdown-text">{selftext}</Markdown>
                 </>
             )}

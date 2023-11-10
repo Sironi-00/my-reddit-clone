@@ -15,7 +15,6 @@ export default function Comments() {
         () => async () => {
             if (postId) {
                 const data = await getComments(postId);
-                console.log(data)
                 setPostState(data);
             }
         },

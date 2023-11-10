@@ -1,0 +1,18 @@
+.comment-message {
+    border: 0.125rem solid #FFF;
+    border-radius: calc(var(--rounded-border) / 2);
+    margin: 0.75rem 0.5rem ;
+    box-shadow: 0 0 0.35rem #0009;
+}
+.comment-message .comment-body {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.5rem;
+}
+.comment-message .comment-body .comment-text {
+    border-radius: 0;
+    width: 100%;
+} 
+.comment-message .comment-body .comment-votes {
+    white-space: nowrap;
+}

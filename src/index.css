@@ -42,6 +42,9 @@ img {
 .bold {
   font-weight: bold;
 }
-li {
-  list-style-position: inside;
+
+.head-info {
+  background-color: #0001;
+  padding: 0.25rem 0.5rem ;
+  border-radius: 0%;
 }

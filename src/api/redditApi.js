@@ -48,7 +48,6 @@ const getSubreddits = async () => {
         const res = await fetch(`https://www.reddit.com/subreddits.json?raw_json=1`);
         if(res.ok) {
             const resJson = await res.json();
-            console.log(resJson["data"]["children"])
             return resJson["data"]["children"];
         }
         return []

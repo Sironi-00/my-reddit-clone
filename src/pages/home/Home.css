@@ -27,7 +27,6 @@
     flex-direction: column;
     gap: 1.25rem;
     /* overflow-y: auto; */
-    background-color: aqua;
 }
 .posts .row-posts {
     display: flex;
