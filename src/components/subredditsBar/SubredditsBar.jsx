@@ -11,7 +11,6 @@ export default function SubredditsBar() {
     useEffect(
         () => async () => {
             const data = await getSubreddits();
-            console.log(data)
             setSubredditArray(data);
         },
         [setSubredditArray, subreddit]

@@ -10,7 +10,7 @@
 }
 #root {
   margin: 0 auto;
-  width: 100%;
+  width: 100vw;
   max-width: 1200px;
   height: 100vh;
   max-height: 100dvh;
@@ -19,12 +19,13 @@
 }
 main {
   overflow: hidden;
-  /* padding: 0.1rem 0.35rem; */
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
-
 }
 p {
   max-width: 100%;
+  text-wrap: wrap;
 }
 a {
   cursor: pointer;
@@ -40,4 +41,7 @@ img {
 }
 .bold {
   font-weight: bold;
+}
+li {
+  list-style-position: inside;
 }

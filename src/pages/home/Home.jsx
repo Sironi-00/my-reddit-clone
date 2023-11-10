@@ -6,13 +6,14 @@ import Post from "../../components/post/Post";
 
 export default function Home() {
     const [postsState, setPostsState] = useState([]);
+    const [screenState, setScreenState] = useState("");
 
-    const { subreddit = null, author = null, } = useParams();
+    const { subreddit = null, author = null } = useParams();
 
-    const [searchParams, ] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     const queryString = searchParams.get("q");
-    
+
     const loadData = async () => {
         setPostsState([]);
         if (subreddit) {
@@ -37,23 +38,37 @@ export default function Home() {
     return (
         <>
             <div className="posts-page">
-                <h2>{
-                subreddit ? `Subrredit: r/${subreddit}` : author ? `Author: ${author}`: queryString?`Search: ${queryString}` : "Home"
-                }
+                <h2 className="page-title">
+                    {subreddit
+                        ? `Subrredit: r/${subreddit}`
+                        : author
+                        ? `Author: ${author}`
+                        : queryString
+                        ? `Search: ${queryString}`
+                        : "Home"}
                 </h2>
                 <div className="posts">
-                    {/* {postsState.map((post, idx) => <Post key={idx} postObject={post} />)} */}
-                    {/* use one div on mobile */}
-                    <div className="left-posts">
-                        {postsState.slice(0, Math.floor(postsState.length / 2)).map((post, idx) => (
-                            <Post key={idx} postObject={post} />
-                        ))}
-                    </div>
-                    <div className="right-posts">
-                        {postsState.slice(Math.floor(postsState.length / 2)).map((post, idx) => (
-                            <Post key={idx} postObject={post} />
-                        ))}
-                    </div>
+                    {/* toggle split posts */}
+                    {screenState == "md" ? (
+                        <div className="row-posts">
+                            {postsState.map((post, idx) => (
+                                <Post key={idx} postObject={post} />
+                            ))}
+                        </div>
+                    ) : (
+                        <>
+                            <div className="left-posts">
+                                {postsState.slice(0, Math.ceil(postsState.length / 2)).map((post, idx) => (
+                                    <Post key={idx} postObject={post} />
+                                ))}
+                            </div>
+                            <div className="right-posts">
+                                {postsState.slice(Math.ceil(postsState.length / 2)).map((post, idx) => (
+                                    <Post key={idx} postObject={post} />
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>
