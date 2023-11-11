@@ -37,11 +37,11 @@ export default function Home() {
 
     return (
         <>
-            <a className="posts-to-top" href="#p-top" >
+            <a className="btn posts-to-top" href="#p-top" >
                 Back to Top
             </a>
             <div className="posts-page">
-                <button className="posts-view" onClick={() => setSplitPosts((prev) => !prev)}>
+                <button className="btn posts-view" onClick={() => setSplitPosts((prev) => !prev)}>
                     {splitPosts ? "Single" : "Split"} View
                 </button>
                 <h2 className="page-title" id="p-top">

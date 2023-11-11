@@ -13,8 +13,8 @@ export default function Header() {
             </div>
             <Search />
             <nav>
-                <NavLink to="">Home</NavLink>
-                <NavLink onClick={() => navigate(-1)}>Back</NavLink>
+                <NavLink className="btn" to="">Home</NavLink>
+                <NavLink className="btn" onClick={() => navigate(-1)}>Back</NavLink>
             </nav>
         </header>
     );

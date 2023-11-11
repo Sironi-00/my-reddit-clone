@@ -61,3 +61,22 @@ img {
     align-items: center;
   }
 }
+
+.btn {
+  width: max-content;
+  padding: 0.2rem 0.35rem;
+
+  background-color: #FFF;
+  color: #000;
+  text-decoration: none;
+
+  border: 0.1rem solid var(--accent);
+  border-radius: var(--rounded-border);
+  box-shadow: 0 0 0.5rem #0009, 0.125rem 0.125rem 0 #0006;
+  
+  transition: none;
+}
+.btn:active {
+  box-shadow:  0;
+  scale: 0.9;
+}

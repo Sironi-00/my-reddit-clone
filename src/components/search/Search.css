@@ -9,7 +9,6 @@
     background-color: #FFF;
     border-radius: var(--rounded-border) 0 0rem var(--rounded-border);
     border: 0.125rem solid #0003;
-    /* border-right: 0; */
     text-align: center;
     width: 100%;
 }

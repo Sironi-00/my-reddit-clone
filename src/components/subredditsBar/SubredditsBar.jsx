@@ -8,31 +8,37 @@ export default function SubredditsBar() {
 
     const { subreddit = "" } = useParams();
 
-    useEffect(
-        () => async () => {
-            const data = await getSubreddits();
-            setSubredditArray(data);
-        },
-        [setSubredditArray, subreddit]
-    );
+    const loadArray = async () => {
+        const data = await getSubreddits();
+        setSubredditArray(data);
+    };
 
-    if (subredditArray.length < 1) {
-        return ;
-    }
+    useEffect(() => {
+        loadArray();
+        return setSubredditArray([]);
+    }, [setSubredditArray, subreddit]);
 
     return (
-        <div className="subreddits-bar">
-            <div className="sub-heads">
-                {
-                    subredditArray.length > 0 && (
-                        subredditArray.map((sub) => {
-                            const { display_name,  url } = sub["data"];
-                            return <Link key={display_name} className={subreddit === display_name ? "current-subreddit":""} to={`/.${url}`}>r/{display_name}</Link>;
-                        })
-
-                    )
-                }
-            </div>
-        </div>
+        <>
+            {subredditArray.length > 0 && (
+                <div className="subreddits-bar">
+                    <div className="sub-heads">
+                        {subredditArray.length > 0 &&
+                            subredditArray.map((sub) => {
+                                const { display_name, url } = sub["data"];
+                                return (
+                                    <Link
+                                        key={display_name}
+                                        className={subreddit === display_name ? "current-subreddit" : ""}
+                                        to={`/.${url}`}
+                                    >
+                                        r/{display_name}
+                                    </Link>
+                                );
+                            })}
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
