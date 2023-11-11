@@ -38,10 +38,10 @@ export default function Home() {
     document.title = subreddit
         ? `subreddit -> r/${subreddit}`
         : author
-        ? `Author: ${author}`
+        ? `author: ${author}`
         : queryString
-        ? `Search: ${queryString}`
-        : "Reddit clone";
+        ? `search: ${queryString}`
+        : "reddit clone";
 
     return (
         <>
@@ -49,7 +49,7 @@ export default function Home() {
                 Back to Top
             </a>
             <div className="posts-page">
-                <button className="btn posts-view" onClick={() => setSplitPosts((prev) => !prev)}>
+                <button className="btn posts-view md-only" onClick={() => setSplitPosts((prev) => !prev)}>
                     {splitPosts ? "Single" : "Split"} View
                 </button>
                 <h2 className="page-title" id="p-top">

@@ -8,7 +8,7 @@ export default function Header() {
         <header>
             <div className="logo">
                 <Link className="logo-text" to="/">
-                    <span className="logo-span">Red</span>d<span className="logo-span">it</span>
+                    <span className="logo-span">Red</span><span className="logo-span-2">d</span><span className="logo-span">it</span>
                 </Link>
             </div>
             <Search />

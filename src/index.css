@@ -19,17 +19,13 @@
   max-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr;
+  position: relative;
 }
 main {
-  overflow: hidden;
+  overflow: hidden auto;
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  position: relative;
-}
-p {
-  max-width: 100%;
-  text-wrap: wrap;
 }
 a {
   cursor: pointer;
@@ -69,6 +65,7 @@ img {
   background-color: #FFF;
   color: #000;
   text-decoration: none;
+  text-shadow: 0rem 0rem 0.05rem var(--accent);
 
   border: 0.1rem solid var(--accent);
   border-radius: var(--rounded-border);
@@ -79,4 +76,14 @@ img {
 .btn:active {
   box-shadow:  0;
   scale: 0.9;
+}
+
+
+@media screen and (max-width: 500px) {
+  .md-only {
+    display: none;
+  }
+  main {
+    border-radius: 0;
+  }
 }

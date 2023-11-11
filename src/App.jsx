@@ -6,7 +6,7 @@ import Comments from './pages/comments/Comments.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <Root />,
     children: [
       {

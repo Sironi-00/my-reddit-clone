@@ -23,7 +23,7 @@ export default function Comments() {
 
     return (
         <>
-        <a className="posts-to-top" href="#c-top" >
+        <a className="btn posts-to-top" href="#c-top" >
                 Back to Top
             </a>
         <div className="comment-page">

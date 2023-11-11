@@ -1,6 +1,7 @@
 .search {
     width: max-content;
     display: flex;
+    height: 1.75rem;
 }
 .search form {
     display: flex;
@@ -22,6 +23,7 @@
 
 .search button {
     padding: 0 0.15rem;
+    color: #000;
     background-color: #FFF;
     border-radius: 0 var(--rounded-border) var(--rounded-border) 0;
     border: 0.125rem solid #0003;

@@ -4,14 +4,17 @@ header {
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    box-shadow: 0 0 0.5rem #0009;
 }
 @media screen and (max-width: 500px) {
     header {
       flex-direction: column;
       justify-content: space-around;
-      align-items: center;
+      border: 0;
+      border-bottom: 0.1rem solid #000;
       border-radius: 0%;
       gap: 0.45rem;
     }
@@ -24,6 +27,7 @@ header a {
 
 header .logo a {
     font-size: 145%;
+    font-size: 200%;
     font-weight: bold;
     text-shadow: 0.1rem 0.1rem #FFF, 0.15rem 0.15rem #000;
     display: flex;
@@ -32,7 +36,9 @@ header .logo a {
 header .logo a:hover {
     scale: 1.15;
 }
-
+.logo .logo-span-2 {
+    rotate: -20deg;
+}
 .logo .logo-span:nth-child(even) {
     animation: animated-text 1s 0.5s linear infinite;
 }
