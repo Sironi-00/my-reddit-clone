@@ -35,9 +35,17 @@ export default function Home() {
         return setPostsState([]);
     }, [subreddit, author, queryString]);
 
+    document.title = subreddit
+        ? `subreddit -> r/${subreddit}`
+        : author
+        ? `Author: ${author}`
+        : queryString
+        ? `Search: ${queryString}`
+        : "Reddit clone";
+
     return (
         <>
-            <a className="btn posts-to-top" href="#p-top" >
+            <a className="btn posts-to-top" href="#p-top">
                 Back to Top
             </a>
             <div className="posts-page">
