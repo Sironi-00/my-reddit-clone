@@ -6,23 +6,23 @@ import Comments from './pages/comments/Comments.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "*",
     element: <Root />,
     children: [
       {
-        path: "/",
+        path: "*",
         element: <Home />
       }, {
-        path: "/search",
+        path: "search",
         element: <Home />
       }, {
-        path: "/author/:author",
+        path: "author/:author",
         element: <Home />
       }, {
-        path: "/r/:subreddit",
+        path: "r/:subreddit",
         element: <Home />
       }, {
-        path: "/comments/:postId",
+        path: "comments/:postId",
         element: <Comments />
       },
     ]
