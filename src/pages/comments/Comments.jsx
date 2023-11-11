@@ -23,10 +23,13 @@ export default function Comments() {
 
     return (
         <>
+        <a className="posts-to-top" href="#c-top" >
+                Back to Top
+            </a>
         <div className="comment-page">
             <div className="comments">
                 {postState[0] && <Post postObject={postState[0]["data"]["children"][0]} />}
-                <div className="comment-messages">
+                <div className="comment-messages" id="c-top">
                     {postState[1] &&
                         postState[1]["data"]["children"].map((commentObj, idx) => (
                             <CommentMessage key={idx} commentsObject={commentObj} />

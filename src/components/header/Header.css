@@ -1,11 +1,66 @@
 header {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--rounded-border);
+    border: 1px solid black;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
-    padding: 0.5rem 2rem;
-    border-radius: var(--rounded-border);
+    gap: 1rem;
+    flex-wrap: wrap;
 }
+@media screen and (max-width: 500px) {
+    header {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 0%;
+      gap: 0.45rem;
+    }
+}
+
+header a {
+    color: #000;
+    text-decoration: none;
+}
+
+header .logo a {
+    font-size: 145%;
+    font-weight: bold;
+    text-shadow: 0.1rem 0.1rem #FFF, 0.15rem 0.15rem #000;
+    display: flex;
+    opacity: 0.75;
+}
+header .logo a:hover {
+    scale: 1.15;
+}
+
+.logo .logo-span:nth-child(even) {
+    animation: animated-text 1s 0.5s linear infinite;
+}
+.logo .logo-span:nth-child(odd) {
+    animation: animated-text 1s linear infinite;
+}
+
+@keyframes animated-text {
+    0% {}
+    50% {
+        color: var(--accent);
+    }
+    100% {}
+}
+
+
 header nav {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
+}
+header nav a {
+    padding: 0.1rem 0.5rem;
+    border: 0.1rem solid var(--accent);
+    border-radius: calc(var(--rounded-border) / 2);
+    box-shadow: 0 0 0.5rem #0009, 0.125rem 0.125rem 0 #0006;
+}
+header nav a:active {
+    box-shadow:  0;
+    scale: 0.95;
 }

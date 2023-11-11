@@ -9,7 +9,6 @@
     box-shadow: 0 0 0.5rem #0007;
     
     max-height: max-content;
-    /* overflow: auto; */
 }
 .post .head-info {
     background-color: #0001;

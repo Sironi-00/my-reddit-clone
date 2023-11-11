@@ -1,7 +1,6 @@
 .subreddits-bar {
     flex: auto 1 1;
     display: flex;
-    /* box-shadow: inset 0 0 0.5rem #0003; */
     align-items: center;
     padding: 0 0.5rem;
 }
@@ -9,7 +8,7 @@
     content: ">";    
 }
 .subreddits-bar::before {
-    content: "<";    
+    content: "<";
 }
 .subreddits-bar .sub-heads {
     margin: 0 0.5rem;
@@ -22,7 +21,7 @@
 }
 .subreddits-bar a {
     color: unset;
-    border: 0.1rem solid #0001;
+    border: 0.1rem solid var(--accent);
     padding: 0.25rem;
     background-color: #0002;
 }

@@ -6,7 +6,7 @@ import Post from "../../components/post/Post";
 
 export default function Home() {
     const [postsState, setPostsState] = useState([]);
-    const [screenState, setScreenState] = useState("");
+    const [splitPosts, setSplitPosts] = useState(false);
 
     const { subreddit = null, author = null } = useParams();
 
@@ -37,8 +37,14 @@ export default function Home() {
 
     return (
         <>
+            <a className="posts-to-top" href="#p-top" >
+                Back to Top
+            </a>
             <div className="posts-page">
-                <h2 className="page-title">
+                <button className="posts-view" onClick={() => setSplitPosts((prev) => !prev)}>
+                    {splitPosts ? "Single" : "Split"} View
+                </button>
+                <h2 className="page-title" id="p-top">
                     {subreddit
                         ? `Subrredit: r/${subreddit}`
                         : author
@@ -49,25 +55,25 @@ export default function Home() {
                 </h2>
                 <div className="posts">
                     {/* toggle split posts */}
-                    {screenState == "md" ? (
-                        <div className="row-posts">
-                            {postsState.map((post, idx) => (
-                                <Post key={idx} postObject={post} />
-                            ))}
-                        </div>
-                    ) : (
+                    {splitPosts ? (
                         <>
                             <div className="left-posts">
-                                {postsState.slice(0, Math.ceil(postsState.length / 2)).map((post, idx) => (
-                                    <Post key={idx} postObject={post} />
-                                ))}
+                                {postsState
+                                    .slice(0, Math.ceil(postsState.length / 2))
+                                    .map((post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />)}
                             </div>
                             <div className="right-posts">
-                                {postsState.slice(Math.ceil(postsState.length / 2)).map((post, idx) => (
-                                    <Post key={idx} postObject={post} />
-                                ))}
+                                {postsState
+                                    .slice(Math.ceil(postsState.length / 2))
+                                    .map((post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />)}
                             </div>
                         </>
+                    ) : (
+                        <div className="row-posts">
+                            {postsState.map(
+                                (post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />
+                            )}
+                        </div>
                     )}
                 </div>
             </div>

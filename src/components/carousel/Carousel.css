@@ -6,17 +6,18 @@
 .post-carousel img {
     display: block;
     object-fit: cover;
-    border: 1px solid #0001;
+    border: 1px solid var(--accent);
 }
 .post-carousel .carousel-control {
     position: absolute;
-    bottom: 0.25rem;
+    top: 45%;
     opacity: 0.65;
     background-color: #FFF;
+    border: 0.1rem solid var(--accent);
+    padding: 0.125rem;
 }
 .post-carousel .carousel-control:hover {
     opacity: 1;
-    /* background-color: var(--bg-main); */
 }
 
 .post-carousel .carousel-control.carousel-prev {
@@ -30,6 +31,7 @@
     bottom: 0.25rem;
     right: 45%;
     background-color: #FFF;
+    border: 0.1rem solid var(--accent);
 
     opacity: 0.75;
 }

@@ -1,5 +1,9 @@
 .search {
-    
+    width: max-content;
+    display: flex;
+}
+.search form {
+    display: flex;
 }
 .search input {
     background-color: #FFF;
@@ -7,12 +11,14 @@
     border: 0.125rem solid #0003;
     /* border-right: 0; */
     text-align: center;
+    width: 100%;
 }
 .search input:focus{
     background-color: #0002;
+    outline: 0.15rem solid var(--accent);
 }
 .search input:focus + .sib {
-    outline: 0.15rem solid #32a1ce;;
+    outline: 0.15rem solid var(--accent);
 }
 
 .search button {

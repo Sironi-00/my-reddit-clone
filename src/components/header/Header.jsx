@@ -1,14 +1,16 @@
 import "./Header.css";
-import Search from '../search/Search'
+import Search from "../search/Search";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
-export default function Header () {
+export default function Header() {
     const navigate = useNavigate();
     return (
         <header>
             <div className="logo">
-                <Link to="/">reddit</Link>
-                </div>
+                <Link className="logo-text" to="/">
+                    <span className="logo-span">Red</span>d<span className="logo-span">it</span>
+                </Link>
+            </div>
             <Search />
             <nav>
                 <NavLink to="">Home</NavLink>
@@ -16,4 +18,4 @@ export default function Header () {
             </nav>
         </header>
     );
-} 
+}
