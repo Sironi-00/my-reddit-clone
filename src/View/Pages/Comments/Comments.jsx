@@ -11,13 +11,15 @@ export default function Comments() {
     const [postState, setPostState] = useState([]);
 
     const { postId } = useParams();
-    useEffect(
-        () => async () => {
-            if (postId) {
-                const data = await getComments(postId);
-                setPostState(data);
-            }
-        },
+    const loadPost = async () => {
+        if (postId) {
+            const data = await getComments(postId);
+            setPostState(data);
+        }
+    }
+    useEffect(() => {
+        loadPost();
+    },
         [postId]
     );
 
