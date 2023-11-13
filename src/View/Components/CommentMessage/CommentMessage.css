@@ -15,4 +15,10 @@
 } 
 .comment-message .comment-body .comment-votes {
     white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 0.1rem solid var(--accent);
+    border-radius: 0;
+    
 }

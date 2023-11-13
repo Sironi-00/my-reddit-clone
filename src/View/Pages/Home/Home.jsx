@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../../../api/redditApi";
 import Post from "../../Components/Post/Post";
 
+import { CircularProgress } from '@mui/material';
+
 export default function Home() {
     const [splitPosts, setSplitPosts] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -66,6 +68,9 @@ export default function Home() {
                 Back to Top
             </a>
             <div className="posts-page">
+                {
+                    isLoading && <CircularProgress />
+                }
                 {children && (
                     <>
                         <button className="btn posts-view md-only" onClick={() => setSplitPosts((prev) => !prev)}>

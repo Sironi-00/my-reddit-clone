@@ -2,6 +2,8 @@ import "./CommentMessage.css";
 import { Link } from "react-router-dom";
 import Markdown from "react-markdown";
 
+import { ThumbUp, } from '@mui/icons-material';
+
 /* eslint-disable react/prop-types */
 export default function CommentMessage({ commentsObject }) {
     const { data } = commentsObject;
@@ -21,8 +23,8 @@ export default function CommentMessage({ commentsObject }) {
             {commentsObject["kind"] === "t1" && (
                 <div className="comment-message">
                     <div className="flex head-info">
-                        <p>Parent: {parent_id}</p>
-                        <p>Comment by: <Link to={`/author/${author}`}>{author}</Link></p>
+                        {/* <p>Parent: {parent_id}</p> */}
+                        <p>By: <Link to={`/author/${author}`}>{author}</Link></p>
                         <p>{new Date(created_utc * 1000).toLocaleDateString()}</p>
                     </div>
                     <div className="comment-body">
@@ -30,7 +32,7 @@ export default function CommentMessage({ commentsObject }) {
                             {body}
                         {/* <p className="comment-text">{body}</p> */}
                         </Markdown>
-                        <p className="comment-votes">U: {ups}</p>
+                        <p className="comment-votes"><ThumbUp /> {ups}</p>
                     </div>
                 </div>
             )}

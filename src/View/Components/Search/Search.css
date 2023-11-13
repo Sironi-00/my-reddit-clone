@@ -17,13 +17,13 @@
     background-color: #0002;
     outline: 0.15rem solid var(--accent);
 }
-.search input:focus + .sib {
+.search input:focus + .search-btn {
     outline: 0.15rem solid var(--accent);
 }
 
 .search button {
     padding: 0 0.15rem;
-    color: #000;
+    color: #0008;
     background-color: #FFF;
     border-radius: 0 var(--rounded-border) var(--rounded-border) 0;
     border: 0.125rem solid #0003;

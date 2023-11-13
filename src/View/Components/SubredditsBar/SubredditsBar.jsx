@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getSubreddits } from "../../../api/redditApi";
 
+import { CircularProgress } from '@mui/material';
+
 export default function SubredditsBar() {
+    const [isLoading, setIsLoading] = useState(false);
     const [subredditArray, setSubredditArray] = useState([]);
 
     const { subreddit = "" } = useParams();
 
     const loadArray = async () => {
+        setIsLoading(true)
         const data = await getSubreddits();
+        setIsLoading(false);
         setSubredditArray(data);
     };
 
@@ -22,6 +27,8 @@ export default function SubredditsBar() {
         <>
             {subredditArray.length > 0 && (
                 <div className="subreddits-bar">
+                    {
+                        isLoading? <CircularProgress /> :
                     <div className="sub-heads">
                         {subredditArray.length > 0 &&
                             subredditArray.map((sub) => {
@@ -37,6 +44,7 @@ export default function SubredditsBar() {
                                 );
                             })}
                     </div>
+                    }
                 </div>
             )}
         </>

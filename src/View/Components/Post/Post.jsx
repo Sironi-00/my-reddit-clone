@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Markdown from "react-markdown";
 import Carousel from "../Carousel/Carousel";
 
+import { ThumbUp, Message } from '@mui/icons-material';
+
+
 export default function Post({ postObject }) {
     const { data } = postObject;
     const {
@@ -100,11 +103,8 @@ export default function Post({ postObject }) {
                     </Link>
                 )}
                 <div className="flex post-rating">
-                    <p>U: {ups}</p>
-                    <p>D: {downs}</p>
-                    <p>
-                        <Link to={`/comments/${id}`}>C: {num_comments}</Link>
-                    </p>
+                    <p><ThumbUp /> {ups}</p>
+                    <Link to={`/comments/${id}`}><Message /> {num_comments}</Link>
                 </div>
             </div>
         </div>

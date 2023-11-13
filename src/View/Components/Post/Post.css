@@ -43,7 +43,17 @@
 .post .post-footer {
     padding: 0.25rem 0.5rem ;
     border-radius: 0%;
+    align-items: center;
 }
 .post .post-rating {
     gap: 0.5rem;
+}
+.post .post-rating p , .post .post-rating a  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+.post .post-rating a {
+    
 }
