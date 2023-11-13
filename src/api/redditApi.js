@@ -1,15 +1,22 @@
 // const baseURL = "https://www.reddit.com/";
 
 import fakePosts from "./fakeData/posts";
-const getPosts = async (paramString="") => {
-    //return (await Promise.resolve(fakePosts)).data.children;
+const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
+    //return (await Promise.resolve(fakePosts)).data;
     // eslint-disable-next-line no-unreachable
-    
+    if (!paramString) {
+        paramString = ".json?";
+    }
+    const pagination = {
+        after: afterId? `&after=${afterId}`: "",
+        before: beforeId? `&before=${beforeId}`: ""
+    }
+
     try {
-        const res = await fetch(`https://www.reddit.com/${paramString}.json?raw_json=1`);
+        const res = await fetch(`https://www.reddit.com/${paramString}raw_json=1${pagination.after}${pagination.before}`);
         if(res.ok) {
             const resJson = await res.json();
-            return resJson.data.children;
+            return resJson.data;
         }
         return []
     } catch (err) {
@@ -26,6 +33,7 @@ const getComments = async (postId) => {
     if (!postId) {
         throw new Error("no postId")
     }
+
     try {
         const res = await fetch(`https://www.reddit.com/${postId}.json?raw_json=1`);
         if(res.ok) {
@@ -57,26 +65,8 @@ const getSubreddits = async () => {
     }
 }
 
-const getSearch = async (query) => {    
-    if (!query) {
-        return []
-    }
-    try {
-        const res = await fetch(`https://www.reddit.com/search.json?q=${query}&raw_json=1`);
-        if(res.ok) {
-            const resJson = await res.json();
-            return resJson["data"]["children"];
-        }
-        return []
-    } catch (err) {
-        console.log("Error: API getSearch()", err);
-        return []
-    }
-}
-
 export {
     getPosts,
     getComments,
     getSubreddits,
-    getSearch
 }

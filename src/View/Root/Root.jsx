@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/header/Header";
-import SubredditsBar from "../components/subredditsBar/SubredditsBar";
+import Header from "../Components/Header/Header";
+import SubredditsBar from "../Components/SubredditsBar/SubredditsBar";
 
 const Root = () => {
     return (

@@ -1,7 +1,7 @@
 import "./Post.css";
 import { Link } from "react-router-dom";
 import Markdown from "react-markdown";
-import Carousel from "../carousel/Carousel";
+import Carousel from "../Carousel/Carousel";
 
 export default function Post({ postObject }) {
     const { data } = postObject;

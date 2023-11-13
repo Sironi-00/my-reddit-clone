@@ -1,8 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import './App.css'
-import Root from './root/Root'
-import Home from './pages/home/Home'
-import Comments from './pages/comments/Comments.jsx'
+import Root from './View/Root/Root.jsx'
+import Home from './View/Pages/Home/Home.jsx'
+import Comments from './View/Pages/Comments/Comments.jsx'
 
 const router = createBrowserRouter([
   {

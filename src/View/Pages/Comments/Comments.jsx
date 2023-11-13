@@ -2,10 +2,10 @@ import "./Comments.css";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getComments } from "../../api/redditApi";
+import { getComments } from "../../../api/redditApi";
 
-import Post from "../../components/post/Post";
-import CommentMessage from "../../components/commentMessage/CommentMessage";
+import Post from "../../Components/Post/Post";
+import CommentMessage from "../../Components/CommentMessage/CommentMessage";
 
 export default function Comments() {
     const [postState, setPostState] = useState([]);

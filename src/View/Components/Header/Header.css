@@ -26,8 +26,6 @@ header a {
 }
 
 header .logo a {
-    font-size: 145%;
-    font-size: 200%;
     font-weight: bold;
     text-shadow: 0.1rem 0.1rem #FFF, 0.15rem 0.15rem #000;
     display: flex;

@@ -1,7 +1,7 @@
 import "./SubredditsBar.css";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getSubreddits } from "../../api/redditApi";
+import { getSubreddits } from "../../../api/redditApi";
 
 export default function SubredditsBar() {
     const [subredditArray, setSubredditArray] = useState([]);

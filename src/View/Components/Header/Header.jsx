@@ -1,5 +1,5 @@
 import "./Header.css";
-import Search from "../search/Search";
+import Search from "../Search/Search";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -7,9 +7,11 @@ export default function Header() {
     return (
         <header>
             <div className="logo">
-                <Link className="logo-text" to="/">
-                    <span className="logo-span">Red</span><span className="logo-span-2">d</span><span className="logo-span">it</span>
-                </Link>
+                <h1>
+                    <Link className="logo-text" to="/">
+                        <span className="logo-span">Red</span><span className="logo-span-2">d</span><span className="logo-span">it</span>
+                    </Link>
+                </h1>
             </div>
             <Search />
             <nav>

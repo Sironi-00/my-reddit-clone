@@ -43,3 +43,8 @@
     z-index: 10;
     opacity: 0.75;
 }
+.posts-page .posts-pagination {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
