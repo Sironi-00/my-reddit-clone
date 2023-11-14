@@ -30,19 +30,3 @@ describe(App, () => {
         expect(element).not.exist
     });
 });
-
-import Home from "../View/Pages/Home/Home";
-import { BrowserRouter } from "react-router-dom";
-describe(Home, () => {
-    beforeEach(() => {
-        render(
-        <BrowserRouter>
-            <Home />
-        </BrowserRouter>
-        )
-    });
-
-    it("Home", () => {
-        screen.debug()      
-    })
-})

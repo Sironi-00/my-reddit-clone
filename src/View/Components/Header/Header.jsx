@@ -15,7 +15,7 @@ export default function Header() {
             </div>
             <Search />
             <nav>
-                <NavLink className="btn" to="">Home</NavLink>
+                <a className="btn" href="/">Home</a>
                 <NavLink className="btn" onClick={() => navigate(-1)}>Back</NavLink>
             </nav>
         </header>

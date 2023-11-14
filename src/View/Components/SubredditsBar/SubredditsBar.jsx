@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getSubreddits } from "../../../api/redditApi";
 
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from "@mui/material";
 
 export default function SubredditsBar() {
     const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ export default function SubredditsBar() {
     const { subreddit = "" } = useParams();
 
     const loadArray = async () => {
-        setIsLoading(true)
+        setIsLoading(true);
         const data = await getSubreddits();
         setIsLoading(false);
         setSubredditArray(data);
@@ -21,32 +21,33 @@ export default function SubredditsBar() {
     useEffect(() => {
         loadArray();
         return setSubredditArray([]);
-    }, [setSubredditArray, subreddit]);
+    }, [setSubredditArray]);
 
     return (
         <>
-            {subredditArray.length > 0 && (
-                <div className="subreddits-bar">
-                    {
-                        isLoading? <CircularProgress /> :
-                    <div className="sub-heads">
-                        {subredditArray.length > 0 &&
-                            subredditArray.map((sub) => {
+            <div className="subreddits-bar">
+                {isLoading ? (
+                    <CircularProgress />
+                ) : (
+                    subredditArray.length > 0 && (
+                        <div className="sub-heads">
+                            {subredditArray.map((sub) => {
                                 const { display_name, url } = sub["data"];
                                 return (
                                     <Link
                                         key={display_name}
                                         className={subreddit === display_name ? "current-subreddit" : ""}
+                                        data-testid="subreddit-link"
                                         to={`/.${url}`}
                                     >
                                         r/{display_name}
                                     </Link>
                                 );
                             })}
-                    </div>
-                    }
-                </div>
-            )}
+                        </div>
+                    )   
+                )}
+            </div>
         </>
     );
 }

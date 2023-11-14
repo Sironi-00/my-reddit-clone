@@ -66,7 +66,7 @@ export default function Post({ postObject }) {
     }
 
     return (
-        <div className="post">
+        <article className="post" role="article">
             <div className="flex head-info">
                 <Link to={`/r/${subreddit}`}>r/{subreddit}</Link>
                 <p>
@@ -107,10 +107,10 @@ export default function Post({ postObject }) {
                     <Link to={`/comments/${id}`}><Message /> {num_comments}</Link>
                 </div>
             </div>
-        </div>
+        </article>
     );
 }
 
-Post.propTypes = {
-    postObject: {},
-};
+// Post.propTypes = {
+//     postObject: {},
+// };

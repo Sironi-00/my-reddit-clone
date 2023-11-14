@@ -86,3 +86,8 @@ img {
     border-radius: 0;
   }
 }
+
+.MuiCircularProgress-root{
+  margin: 1rem auto;
+  display: block !important;
+}

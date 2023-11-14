@@ -13,7 +13,7 @@ export default function Comments() {
     const [isLoading, setIsLoading] = useState(false);
     const [postState, setPostState] = useState([]);
 
-    const { postId } = useParams();
+    const { postId = "" } = useParams();
     const loadPost = async () => {
         setIsLoading(true)
         if (postId) {
@@ -36,18 +36,19 @@ export default function Comments() {
                 Back to Top
             </a>
         <div className="comment-page">
-            {
-                isLoading ? <CircularProgress />:
                 <div className="comments">
-                    {postState[0] && <Post postObject={postState[0]["data"]["children"][0]} />}
+                    {
+                        isLoading && <CircularProgress />
+                    }
+                    {
+                        postState[0] && <Post postObject={postState[0]["data"]["children"][0]} />
+                    }
                     <div className="comment-messages" id="c-top">
-                        {postState[1] &&
-                            postState[1]["data"]["children"].map((commentObj, idx) => (
-                                <CommentMessage key={idx} commentsObject={commentObj} />
-                            ))}
+                    {
+                        postState[1] && postState[1]["data"]["children"].map((commentObj, idx) => (<CommentMessage key={idx} commentsObject={commentObj} />))
+                    }
                     </div>
                 </div>
-            }
         </div>
         </>
     );

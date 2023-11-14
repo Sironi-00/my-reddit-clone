@@ -71,7 +71,7 @@ export default function Home() {
                 {
                     isLoading && <CircularProgress />
                 }
-                {children && (
+                { children ? (
                     <>
                         <button className="btn posts-view md-only" onClick={() => setSplitPosts((prev) => !prev)}>
                             {splitPosts ? "Single" : "Split"} View
@@ -122,7 +122,11 @@ export default function Home() {
                             )}
                         </div>
                     </>
-                )}
+                ):
+                <>
+                { !isLoading && <h2>No posts found</h2>}
+                </>
+            }
             </div>
         </>
     );

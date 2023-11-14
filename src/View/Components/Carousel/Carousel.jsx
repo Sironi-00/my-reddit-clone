@@ -27,6 +27,6 @@ export default function Carousel({imageArray}) {
     );
 }
 
-Carousel.propTypes = {
-    imageArray: []
-}
+// Carousel.propTypes = {
+//     imageArray: []
+// }

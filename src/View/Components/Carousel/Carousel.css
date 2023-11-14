@@ -1,6 +1,7 @@
 .post-carousel {
     position: relative;
     box-shadow: 0.2rem 0.2rem 0.25rem #0009, 0 0 0.25rem #0009;
+    background-color: var(--accent);
 }
 
 .post-carousel img {

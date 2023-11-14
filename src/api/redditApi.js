@@ -1,9 +1,6 @@
 // const baseURL = "https://www.reddit.com/";
 
-import fakePosts from "./fakeData/posts";
 const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
-    //return (await Promise.resolve(fakePosts)).data;
-    // eslint-disable-next-line no-unreachable
     if (!paramString) {
         paramString = ".json?";
     }
@@ -18,22 +15,15 @@ const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
             const resJson = await res.json();
             return resJson.data;
         }
-        return []
+        return {};
     } catch (err) {
         console.log("Error: API getPosts()", err);
-        return []
+        return {};
     }
     
 }
 
-import fakeComments from "./fakeData/comments";
-const getComments = async (postId) => {    
-    //return (await Promise.resolve(fakeComments));
-    // eslint-disable-next-line no-unreachable
-    if (!postId) {
-        throw new Error("no postId")
-    }
-
+const getComments = async (postId = "") => {    
     try {
         const res = await fetch(`https://www.reddit.com/${postId}.json?raw_json=1`);
         if(res.ok) {
@@ -47,11 +37,7 @@ const getComments = async (postId) => {
     }
 }
 
-import fakeSubreddits from "./fakeData/subreddits";
-const getSubreddits = async () => {
-    //return (await Promise.resolve(fakeSubreddits)).data.children;
-    // eslint-disable-next-line no-unreachable
-    
+const getSubreddits = async () => {    
     try {
         const res = await fetch(`https://www.reddit.com/subreddits.json?raw_json=1`);
         if(res.ok) {
