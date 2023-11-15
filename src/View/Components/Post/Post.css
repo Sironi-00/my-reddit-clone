@@ -28,14 +28,6 @@
 }
 .post .markdown-text {
     background-color: #0001;
-    /* margin: 0.25rem; */
-    padding: 0.25rem 0.5rem;
-}
-.post .markdown-text li {
-    list-style-position: inside;
-  }
-.post .markdown-text p {
-    display: inline;
 }
 .post .post-carousel {
     margin: 0.25rem;

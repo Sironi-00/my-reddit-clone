@@ -2,7 +2,7 @@
 
 // import fakePosts from "./fakeData/posts";
 const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
-    console.log("fetching", paramString)
+    // console.log("fetching", paramString)
     if (!paramString) {
         paramString = ".json?";
     }
@@ -50,7 +50,7 @@ const getComments = async (postId = "") => {
 
 // import fakeSubreddits from "./fakeData/subreddits";
 const getSubreddits = async () => {
-    console.log("fetching, sub/r", )
+    // console.log("fetching, sub/r", )
     try {
         const res = await fetch(`https://www.reddit.com/subreddits.json?raw_json=1`);
         if (res.status === 429) {

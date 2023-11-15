@@ -28,9 +28,8 @@ export default function CommentMessage({ commentsObject }) {
                         <p>{new Date(created_utc * 1000).toLocaleDateString()}</p>
                     </div>
                     <div className="comment-body">
-                        <Markdown className="comment-text">
+                        <Markdown className="markdown-text comment-text">
                             {body}
-                        {/* <p className="comment-text">{body}</p> */}
                         </Markdown>
                         <p className="comment-votes"><ThumbUp /> {ups}</p>
                     </div>
