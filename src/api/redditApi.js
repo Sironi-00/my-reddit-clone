@@ -1,6 +1,8 @@
 // const baseURL = "https://www.reddit.com/";
 
+// import fakePosts from "./fakeData/posts";
 const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
+    console.log("fetching", paramString)
     if (!paramString) {
         paramString = ".json?";
     }
@@ -11,6 +13,10 @@ const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
 
     try {
         const res = await fetch(`https://www.reddit.com/${paramString}raw_json=1${pagination.after}${pagination.before}`);
+        if (res.status === 429) {
+            console.log("429:")
+            //return (await (Promise.resolve(fakePosts))).data;
+        }
         if(res.ok) {
             const resJson = await res.json();
             return resJson.data;
@@ -23,9 +29,14 @@ const getPosts = async (paramString=".json", { afterId="", beforeId=""}={}) => {
     
 }
 
+// import fakeComments from './fakeData/comments';
 const getComments = async (postId = "") => {    
     try {
         const res = await fetch(`https://www.reddit.com/${postId}.json?raw_json=1`);
+        if (res.status === 429) {
+            console.log("429:")
+            // return (await (Promise.resolve(fakeComments)));
+        }
         if(res.ok) {
             const resJson = await res.json();
             return resJson;
@@ -37,9 +48,15 @@ const getComments = async (postId = "") => {
     }
 }
 
-const getSubreddits = async () => {    
+// import fakeSubreddits from "./fakeData/subreddits";
+const getSubreddits = async () => {
+    console.log("fetching, sub/r", )
     try {
         const res = await fetch(`https://www.reddit.com/subreddits.json?raw_json=1`);
+        if (res.status === 429) {
+            console.log("429:")
+            // return (await (Promise.resolve(fakeSubreddits))).data.children;
+        }
         if(res.ok) {
             const resJson = await res.json();
             return resJson["data"]["children"];

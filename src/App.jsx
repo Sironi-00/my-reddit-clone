@@ -3,6 +3,8 @@ import Root from './View/Root/Root.jsx'
 import Home from './View/Pages/Home/Home.jsx'
 import Comments from './View/Pages/Comments/Comments.jsx'
 
+import ContextProvider from './Controller/ContextProvider/ContextProvider.jsx'
+
 const router = createBrowserRouter([
   {
     path: "*",
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
       }, {
         path: "comments/:postId",
         element: <Comments />
-      },
+      }, 
     ]
 
   },
@@ -31,7 +33,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   )
 }
 

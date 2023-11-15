@@ -1,25 +1,26 @@
 import "./Home.css";
 import { useParams, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getPosts } from "../../../api/redditApi";
 import Post from "../../Components/Post/Post";
 
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from "@mui/material";
+import { AppContext } from "../../../Controller/Controller";
+import { selectPosts } from "../../../Controller/Selectors";
 
 export default function Home() {
+    const { appData, dispatch } = useContext(AppContext);
+    const { children = [], after = "" } = selectPosts(appData);
+
     const [splitPosts, setSplitPosts] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [postsState, setPostsState] = useState({});
-
-    const { children, after } = postsState;
 
     const { subreddit = null, author = null } = useParams();
-
+    
     const [searchParams] = useSearchParams();
-
     const queryString = searchParams.get("q");
 
-    const fetchPayload = () => {
+    const fetchString = () => {
         let payload = "";
         if (subreddit) {
             payload = `r/${subreddit}.json?`;
@@ -34,9 +35,8 @@ export default function Home() {
     const loadData = async () => {
         setIsLoading(true);
 
-        setPostsState({});
-        const data = await getPosts(fetchPayload());
-        setPostsState(data);
+        const data = await getPosts(fetchString());
+        dispatch({ type: "loadPosts", payload: data });
 
         setIsLoading(false);
     };
@@ -45,22 +45,26 @@ export default function Home() {
         if (!after) {
             return;
         }
-        setPostsState({});
-        const data = await getPosts(fetchPayload(), { afterId: after });
-        setPostsState(data);
+        setIsLoading(true);
+        const data = await getPosts(fetchString(), { afterId: after });
+        dispatch({ type: "morePosts", payload: data });
+        setIsLoading(false);
     };
 
     useEffect(() => {
+        dispatch({
+            type: "clearPosts"
+        })
         loadData();
     }, [subreddit, author, queryString]);
 
     document.title = subreddit
-        ? `subreddit -> r/${subreddit}`
+        ? `🌐 r/${subreddit}`
         : author
-        ? `author: ${author}`
+        ? `👤 ${author}`
         : queryString
-        ? `search: ${queryString}`
-        : "reddit clone";
+        ? `🔍 ${queryString}`
+        : "🪩 reddit clone";
 
     return (
         <>
@@ -68,65 +72,57 @@ export default function Home() {
                 Back to Top
             </a>
             <div className="posts-page">
-                {
-                    isLoading && <CircularProgress />
-                }
-                { children ? (
-                    <>
-                        <button className="btn posts-view md-only" onClick={() => setSplitPosts((prev) => !prev)}>
-                            {splitPosts ? "Single" : "Split"} View
-                        </button>
-                        <h2 className="page-title" id="p-top">
-                            {subreddit
-                                ? `Subrredit: r/${subreddit}`
-                                : author
-                                ? `Author: ${author}`
-                                : queryString
-                                ? `Search: ${queryString}`
-                                : "Home"}
-                        </h2>
-                        <div className="posts">
-                            {/* toggle split posts */}
-                            {splitPosts ? (
-                                <>
-                                    <div className="left-posts">
-                                        {children
-                                            .slice(0, Math.ceil(children.length / 2))
-                                            .map(
-                                                (post, idx) =>
-                                                    post["kind"] === "t3" && <Post key={idx} postObject={post} />
-                                            )}
-                                    </div>
-                                    <div className="right-posts">
-                                        {children
-                                            .slice(Math.ceil(children.length / 2))
-                                            .map(
-                                                (post, idx) =>
-                                                    post["kind"] === "t3" && <Post key={idx} postObject={post} />
-                                            )}
-                                    </div>
-                                </>
-                            ) : (
-                                <div className="row-posts">
-                                    {children.map(
-                                        (post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />
-                                    )}
+                <button className="btn posts-view md-only" onClick={() => setSplitPosts((prev) => !prev)}>
+                    {splitPosts ? "Single" : "Split"} View
+                </button>
+                <h2 className="page-title" id="p-top">
+                    {subreddit
+                        ? `Subrredit: r/${subreddit}`
+                        : author
+                        ? `Author: ${author}`
+                        : queryString
+                        ? `Search: ${queryString}`
+                        : "Home"}
+                </h2>
+                {children.length > 0 ? (
+                    <div className="posts">
+                        {splitPosts ? (
+                            <>
+                                <div className="left-posts">
+                                    {children
+                                        .slice(0, Math.ceil(children.length / 2))
+                                        .map(
+                                            (post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />
+                                        )}
                                 </div>
-                            )}
-                        </div>
-                        <div className="posts-pagination">
-                            {after && (
-                                <button className="btn" onClick={() => loadDataAfter()}>
-                                    More
-                                </button>
-                            )}
-                        </div>
-                    </>
-                ):
-                <>
-                { !isLoading && <h2>No posts found</h2>}
-                </>
-            }
+                                <div className="right-posts">
+                                    {children
+                                        .slice(Math.ceil(children.length / 2))
+                                        .map(
+                                            (post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />
+                                        )}
+                                </div>
+                            </>
+                        ) : (
+                            <div className="row-posts">
+                                {children.map(
+                                    (post, idx) => post["kind"] === "t3" && <Post key={idx} postObject={post} />
+                                )}
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <>{!isLoading && <h2 className="no-items">No posts found</h2>}</>
+                )}
+
+                {isLoading && <CircularProgress />}
+                <div className="posts-pagination">
+                    {!isLoading && after && (
+                        <button className="btn" onClick={() => loadDataAfter()}>
+                            More
+                        </button>
+                    )}
+                </div>
             </div>
         </>
     );

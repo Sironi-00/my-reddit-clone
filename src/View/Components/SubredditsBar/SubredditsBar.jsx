@@ -1,27 +1,34 @@
 import "./SubredditsBar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getSubreddits } from "../../../api/redditApi";
 
 import { CircularProgress } from "@mui/material";
+import { AppContext } from "../../../Controller/Controller";
+import { selectSubreddits } from "../../../Controller/Selectors";
 
 export default function SubredditsBar() {
+    const { appData, dispatch } = useContext(AppContext);
+
     const [isLoading, setIsLoading] = useState(false);
-    const [subredditArray, setSubredditArray] = useState([]);
+    
+    const subredditArray = selectSubreddits(appData);
 
     const { subreddit = "" } = useParams();
 
     const loadArray = async () => {
         setIsLoading(true);
         const data = await getSubreddits();
+        dispatch({
+            type: "loadSubreddits",
+            payload: data
+        });
         setIsLoading(false);
-        setSubredditArray(data);
     };
 
     useEffect(() => {
         loadArray();
-        return setSubredditArray([]);
-    }, [setSubredditArray]);
+    }, []);
 
     return (
         <>

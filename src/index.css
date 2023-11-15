@@ -91,3 +91,7 @@ img {
   margin: 1rem auto;
   display: block !important;
 }
+.no-items {
+  margin: 1rem;
+  text-align: center;
+}
