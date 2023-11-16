@@ -3,7 +3,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     /* border: 1px solid #000; */
-    /* overflow: hidden; */
+    /* overflow: hidden scroll; */
     position: relative;
 }
 .posts-page .page-title {
@@ -16,7 +16,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.25rem;
-    /* overflow: hidden auto; */
+    overflow: auto hidden;
+    height: max-content;
 }
 
 .left-posts, .right-posts {

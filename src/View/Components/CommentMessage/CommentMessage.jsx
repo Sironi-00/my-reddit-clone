@@ -21,7 +21,7 @@ export default function CommentMessage({ commentsObject }) {
     return (
         <>
             {commentsObject["kind"] === "t1" && (
-                <div className="comment-message">
+                <div className="comment-message" data-testid="comment-message">
                     <div className="flex head-info">
                         {/* <p>Parent: {parent_id}</p> */}
                         <p>By: <Link to={`/author/${author}`}>{author}</Link></p>

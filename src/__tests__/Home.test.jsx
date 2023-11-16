@@ -2,12 +2,15 @@ import { render, screen } from "@testing-library/react";
 
 import { BrowserRouter } from "react-router-dom";
 
+import ContextProvider from "../Controller/ContextProvider/ContextProvider";
 import Home from "../View/Pages/Home/Home";
 describe(Home, () => {
     beforeEach(() => {
         render(
         <BrowserRouter>
-            <Home />
+            <ContextProvider>
+                <Home />
+            </ContextProvider>
         </BrowserRouter>
         )
     });

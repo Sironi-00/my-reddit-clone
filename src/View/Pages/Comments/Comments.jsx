@@ -18,18 +18,20 @@ export default function Comments() {
     const [isLoading, setIsLoading] = useState(false);
 
     const { postId = "" } = useParams();
+
     const loadPost = async () => {
         if (!postId) {
             return;
         }
-        setIsLoading(true)
+        setIsLoading(true);
         const data = await getComments(postId);
         dispatch({
             type: "loadComments",
             payload: data
         });
         setIsLoading(false)
-    }
+    };
+
     useEffect(() => {
         loadPost();
     },
@@ -45,7 +47,7 @@ export default function Comments() {
             </a>
         <div className="comment-page">
             {
-                (!isLoading&& postComment[0] && postComment[1]) ?<>
+                (!isLoading && (postComment[0] && postComment[1])) ?
                 <div className="comments">
                     <Post postObject={postComment[0]["data"]["children"][0]} />
                     <div className="comment-messages" id="c-top">
@@ -53,7 +55,7 @@ export default function Comments() {
                         postComment[1]["data"]["children"].map((commentObj, idx) => (<CommentMessage key={idx} commentsObject={commentObj} />))
                     }
                     </div>
-                </div></>:
+                </div>:
                 isLoading ? <CircularProgress />: <h2 className="no-items">No post Found</h2>
             }
         </div>
