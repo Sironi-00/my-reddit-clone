@@ -56,7 +56,11 @@ JSON URL: (https://www.reddit.com/.json)
 ## Design
 My goal was to display posts like on YouTube, but the project changed as I continued.
 
-![Youtube Layout](./public/youtube_layout.png)
-
+### Desktop Preview
 ![Desktop Preview](./public/desktop_preview.png)
+
+### Mobile Preview
 ![Mobile Preview](./public/mobile_preview.png)
+
+### Youtube Layout
+![Youtube Layout](./public/youtube_layout.png)
