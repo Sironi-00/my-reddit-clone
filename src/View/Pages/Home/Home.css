@@ -46,6 +46,7 @@
     opacity: 0.75;
 }
 .posts-page .posts-pagination {
+    width: 100%;
     display: flex;
     justify-content: space-around;
     padding: 1rem;

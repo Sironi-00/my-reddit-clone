@@ -16,7 +16,7 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
 
     const { subreddit = null, author = null } = useParams();
-    
+
     const [searchParams] = useSearchParams();
     const queryString = searchParams.get("q");
 
@@ -53,8 +53,8 @@ export default function Home() {
 
     useEffect(() => {
         dispatch({
-            type: "clearPosts"
-        })
+            type: "clearPosts",
+        });
         loadData();
     }, [subreddit, author, queryString]);
 
@@ -110,19 +110,18 @@ export default function Home() {
                                 )}
                             </div>
                         )}
+                        {isLoading && <CircularProgress />}
+                        <div className="posts-pagination">
+                            {!isLoading && after && (
+                                <button className="btn" onClick={() => loadDataAfter()}>
+                                    More
+                                </button>
+                            )}
+                        </div>
                     </div>
                 ) : (
                     <>{!isLoading && <h2 className="no-items">No posts found</h2>}</>
                 )}
-
-                {isLoading && <CircularProgress />}
-                <div className="posts-pagination">
-                    {!isLoading && after && (
-                        <button className="btn" onClick={() => loadDataAfter()}>
-                            More
-                        </button>
-                    )}
-                </div>
             </div>
         </>
     );
