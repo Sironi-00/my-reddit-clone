@@ -120,7 +120,7 @@ export default function Home() {
                         </div>
                     </div>
                 ) : (
-                    <>{!isLoading && <h2 className="no-items">No posts found</h2>}</>
+                    <>{isLoading ? <CircularProgress />: <h2 className="no-items">No posts found</h2>}</>
                 )}
             </div>
         </>

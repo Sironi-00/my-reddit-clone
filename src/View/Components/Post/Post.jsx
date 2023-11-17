@@ -37,12 +37,12 @@ export default function Post({ postObject }) {
         
         const galleryUrl = [];
         Object.keys(media_metadata).forEach((galleryItem) => {
-            const dataGallery = metaData[galleryItem];
-            if (dataGallery.status !== "valid") {
-                console.log(dataGallery)
+            const data = metaData[galleryItem];
+            if (data.status !== "valid") {
+                console.log(data)
                 return ;
             }
-            const itemUrl = dataGallery?.["s"]?.["u"];
+            const itemUrl = data?.["s"]?.["u"];
             if (itemUrl) {
                 galleryUrl.push(itemUrl);
             }
