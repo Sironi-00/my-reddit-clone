@@ -30,6 +30,8 @@
     border: 0.1rem solid var(--accent);
     padding: 0.25rem;
     background-color: #0002;
+    
+    white-space: pre;
 }
 .subreddits-bar a.current-subreddit {
     border: 0.15rem solid #000;
