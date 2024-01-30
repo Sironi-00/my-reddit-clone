@@ -61,6 +61,3 @@ My goal was to display posts like on YouTube, but the project changed as I conti
 
 ### Mobile Preview
 ![Mobile Preview](./public/mobile_preview.png)
-
-### Youtube Layout
-![Youtube Layout](./public/youtube_layout.png)
