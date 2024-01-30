@@ -40,7 +40,6 @@ export default function SubredditsBar() {
                         <div className="sub-heads">
                             {subredditArray.map((sub) => {
                                 const { display_name, url } = sub["data"];
-                                console.log(`r/${display_name}`);
                                 return (
                                     <Link
                                         key={display_name}
